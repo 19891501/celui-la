@@ -1,5 +1,10 @@
 /** Un possible. Pas un champ. Pas une session. Pas une skill. */
 
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import Ajv from "ajv/dist/2020.js";
+
 export const VERSION = 1;
 export const MAX_BYTES = 2048;
 
@@ -7,6 +12,11 @@ export const STATES = Object.freeze(["open", "closed-here"]);
 
 const KEY = /^(possible(\s+v1)?|affaire:|contraintes:|état:|etat:|nom:|où:|ou:|fait:)/i;
 const AVIS = /\b(trop|peu|probab|devrait|je pense|on devrait|fiable|mieux)\b|%|\bP\s*=/i;
+
+const schema = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../schema/possible.v1.json"), "utf8"),
+);
+const validateSchema = new Ajv({ allErrors: true }).compile(schema);
 
 /**
  * @typedef {{
@@ -27,21 +37,10 @@ export function isFact(s) {
 }
 
 export function isPossible(value) {
-  if (!value || typeof value !== "object") return false;
+  if (!validateSchema(value)) return false;
   const p = value;
-  if (p.v !== 1) return false;
-  if (typeof p.affair !== "string" || !p.affair.trim()) return false;
-  if (!Array.isArray(p.constraints) || p.constraints.length < 1) return false;
-  if (!p.constraints.every((c) => typeof c === "string" && c.trim() && !AVIS.test(c))) {
-    return false;
-  }
-  if (typeof p.name !== "string" || !p.name.trim()) return false;
-  if (p.ref !== null && typeof p.ref !== "string") return false;
-  if (p.state !== "open" && p.state !== "closed-here") return false;
-  if (p.state === "open" && p.predicate !== null) return false;
-  if (p.state === "closed-here") {
-    if (!isFact(p.predicate)) return false;
-  }
+  if (!p.constraints.every((c) => !AVIS.test(c))) return false;
+  if (p.state === "closed-here" && !isFact(p.predicate)) return false;
   return true;
 }
 
@@ -74,8 +73,10 @@ export function parsePossible(raw) {
       return null;
     }
   }
-  const lines = trimmed.split(/\r?\n/).map((l) => l.trim()).filter((l, i, a) => l || i === 0);
-  const body = lines.filter(Boolean);
+  const body = trimmed
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter(Boolean);
   if (!/^POSSIBLE(\s+v1)?$/i.test(body[0] ?? "")) return null;
   const extra = body.slice(1).filter((l) => !KEY.test(l));
   if (extra.length) return null;
