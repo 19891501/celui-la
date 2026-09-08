@@ -8,5 +8,8 @@
     "test": "node --test src/*.test.mjs",
     "parse": "node src/cli.mjs parse",
     "encode": "node src/cli.mjs encode"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0"
   }
 }

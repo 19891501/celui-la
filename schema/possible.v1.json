@@ -10,12 +10,35 @@
     "affair": { "type": "string", "minLength": 1, "maxLength": 240 },
     "constraints": {
       "type": "array",
+      "minItems": 1,
       "maxItems": 8,
-      "items": { "type": "string", "maxLength": 160 }
+      "items": { "type": "string", "minLength": 1, "maxLength": 160 }
     },
     "name": { "type": "string", "minLength": 1, "maxLength": 160 },
     "ref": { "type": ["string", "null"], "maxLength": 240 },
     "state": { "enum": ["open", "closed-here"] },
     "predicate": { "type": ["string", "null"], "maxLength": 200 }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "state": { "const": "open" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": { "predicate": { "type": "null" } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "state": { "const": "closed-here" } },
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "predicate": { "type": "string", "minLength": 1, "maxLength": 200 }
+        }
+      }
+    }
+  ]
 }
