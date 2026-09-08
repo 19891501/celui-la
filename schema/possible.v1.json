@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/19891501/celui-la/schema/possible.v1.json",
+  "title": "Possible v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["v", "affair", "constraints", "name", "ref", "state", "predicate"],
+  "properties": {
+    "v": { "const": 1 },
+    "affair": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "constraints": {
+      "type": "array",
+      "maxItems": 8,
+      "items": { "type": "string", "maxLength": 160 }
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "ref": { "type": ["string", "null"], "maxLength": 240 },
+    "state": { "enum": ["open", "closed-here"] },
+    "predicate": { "type": ["string", "null"], "maxLength": 200 }
+  }
+}
