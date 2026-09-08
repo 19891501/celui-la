@@ -1,0 +1,12 @@
+{
+  "name": "celui-la",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Un possible, arraché à une session morte, collable comme un lien.",
+  "scripts": {
+    "test": "node --test src/*.test.mjs",
+    "parse": "node src/cli.mjs parse",
+    "encode": "node src/cli.mjs encode"
+  }
+}
