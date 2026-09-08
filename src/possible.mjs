@@ -36,6 +36,11 @@ export function isFact(s) {
   return /\d/.test(s) || /[><=≤≥]/.test(s);
 }
 
+export function schemaErrors(value) {
+  if (validateSchema(value)) return null;
+  return validateSchema.errors ?? [];
+}
+
 export function isPossible(value) {
   if (!validateSchema(value)) return false;
   const p = value;

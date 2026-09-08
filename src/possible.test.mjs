@@ -49,7 +49,8 @@ test("closed-here without predicate is not a possible", () => {
   assert.equal(isPossible({ ...closed, predicate: "  " }), false);
 });
 
-test("no constraint is not a possible", () => {
+test("Ajv rejects extra keys and empty constraints", () => {
+  assert.equal(isPossible({ ...open, extra: true }), false);
   assert.equal(isPossible({ ...open, constraints: [] }), false);
 });
 
