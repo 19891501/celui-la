@@ -1,44 +1,18 @@
 # Comment on travaille
 
-Ce dépôt est un **chantier**, pas une conversation.
+Chantier. Pas une conversation. **Ne pas attendre un ordre.**
 
-## Une unité
+L’affaire réelle (2026-09-08) :
 
-Une PR, une hypothèse. Si ça ressemble à un produit, on ne merge pas.
+```
+POSSIBLE v1
+affaire: un chantier qui avance sans que je le dirige à chaque heure
+contraintes: un objet collable · pas une session · pas un tarif
+état: ouvert
+nom: Celui-là
+où: github.com/19891501/celui-la
+```
 
-## Massacre avant merge
+Interdit : démos à tarif / budget / vélo. Interdit : « explore X » comme travail. Interdit : menus, choix, schémas.
 
-Toute chose collée qui n’est pas `POSSIBLE v1` doit échouer `classify` ≠ `possible`.
-
-Interdit d’ajouter :
-
-- un transcript
-- un `SKILL.md`
-- un handoff / SBAR
-- un champ (plusieurs items)
-- un JSONL de session
-- une UI, un compte, un protocole réseau
-
-avant qu’une **affaire réelle** ait été courue (`experiments/runs/`).
-
-## Semaine 1
-
-1. Une affaire **déjà vraie** (pas une démo).
-2. Extraire **un** possible écarté.
-3. Détruire la session.
-4. Le donner à un **autre** modèle, objet seul.
-5. Noter dans `experiments/runs/` : B reprend-il **cette** branche ?
-
-Si non : issue `kill`, on ferme.
-
-## Issues
-
-| Label | Sens |
-|-------|------|
-| `gate` | Bloque tout le reste |
-| `experiment` | Une course, un run |
-| `kill` | Preuve que c’est faux |
-| `forbid` | On ne construira pas ça |
-| `object` | Le format v1 |
-
-Pas de milestone « app ». Pas de projet AION ici.
+Une unité par session, puis on pousse. Si `experiments/runs/` n’a rien de neuf et que personne n’a parlé : **quand même** une unité (test, run, ou kill). Pas d’AION. Pas d’app avant qu’un run ait survécu.
