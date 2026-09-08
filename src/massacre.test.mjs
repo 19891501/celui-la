@@ -76,10 +76,71 @@ test("assertNotImpostor throws on anything but a possible", () => {
   assert.throws(() => assertNotImpostor("User: hi\nAssistant: hello"), /killed: transcript/);
   const ok = assertNotImpostor(`POSSIBLE v1
 affaire: test
+contraintes: ≤ 1
 état: ouvert
 nom: X
 `);
   assert.equal(ok.name, "X");
+});
+
+test("kill avis in fait", () => {
+  const raw = `POSSIBLE v1
+affaire: vélo
+contraintes: ≤ 1800 €
+état: clos-ici
+nom: X
+fait: trop cher
+`;
+  assert.equal(parsePossible(raw), null);
+  assert.notEqual(classify(raw), "possible");
+});
+
+test("kill roman after header", () => {
+  const raw = `POSSIBLE v1
+affaire: vélo
+contraintes: ≤ 1800 €
+état: ouvert
+nom: Babboe
+
+User: et ensuite?
+Assistant: je cherche
+`;
+  assert.equal(parsePossible(raw), null);
+  assert.equal(classify(raw), "transcript");
+});
+
+test("kill open with a fait line", () => {
+  const raw = `POSSIBLE v1
+affaire: vélo
+contraintes: ≤ 1800 €
+état: ouvert
+nom: X
+fait: 2450 € > 1800 €
+`;
+  assert.equal(parsePossible(raw), null);
+});
+
+test("accept JSON mirror of one possible", () => {
+  const raw = JSON.stringify({
+    v: 1,
+    affair: "vélo",
+    constraints: ["≤ 1800 €"],
+    name: "Babboe",
+    ref: "leboncoin.fr/1",
+    state: "open",
+    predicate: null,
+  });
+  assert.equal(classify(raw), "possible");
+});
+
+test("accept indented keys", () => {
+  const raw = `POSSIBLE v1
+  affaire: vélo
+  contraintes: ≤ 1800 €
+  état: ouvert
+  nom: Babboe
+`;
+  assert.equal(classify(raw), "possible");
 });
 
 test("empty is unknown, not a possible", () => {

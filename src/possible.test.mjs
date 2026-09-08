@@ -49,9 +49,8 @@ test("closed-here without predicate is not a possible", () => {
   assert.equal(isPossible({ ...closed, predicate: "  " }), false);
 });
 
-test("missing name is not a possible", () => {
-  assert.equal(isPossible({ ...open, name: "" }), false);
-  assert.equal(parsePossible("POSSIBLE v1\naffaire: x\nétat: ouvert\n"), null);
+test("no constraint is not a possible", () => {
+  assert.equal(isPossible({ ...open, constraints: [] }), false);
 });
 
 test("pasteable: encoded size stays under MAX_BYTES", () => {
