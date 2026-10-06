@@ -27,11 +27,11 @@ Si non : le dépôt se ferme.
 
 ```
 POSSIBLE v1
-affaire: Vélo cargo d'occasion à Lyon avant le 20 septembre
-contraintes: budget ≤ 1800 € · largeur < 80 cm
+affaire: un chantier qui avance sans que je le dirige à chaque heure
+contraintes: un objet collable · pas une session · pas un tarif
 état: ouvert
-nom: Babboe Mini-E 2022, 3e arr.
-où: leboncoin.fr/164821
+nom: Celui-là
+où: github.com/19891501/celui-la
 ```
 
 `état: clos-ici` exige une ligne `fait:` factuelle. Jamais un récit.
