@@ -1,18 +1,9 @@
 # Comment on travaille
 
-Chantier. Pas une conversation. **Ne pas attendre un ordre.**
+Pas de bifurcation, pas d'identité. Pas d'identité, pas d'objet.
 
-L’affaire réelle (2026-09-08) :
+Le code ne juge pas la vérité d'une condition. Il refuse un triplet structurellement vide, et il refuse un objet dont le témoin sémantique n'est pas explicitement vrai.
 
-```
-POSSIBLE v1
-affaire: un chantier qui avance sans que je le dirige à chaque heure
-contraintes: un objet collable · pas une session · pas un tarif
-état: ouvert
-nom: Celui-là
-où: github.com/19891501/celui-la
-```
+Interdit pour l'instant : capsule, chiffrement, langage interne, application, comptes.
 
-Interdit : démos à tarif / budget / vélo. Interdit : « explore X » comme travail. Interdit : menus, choix, schémas.
-
-Une unité par session, puis on pousse. Si `experiments/runs/` n’a rien de neuf et que personne n’a parlé : **quand même** une unité (test, run, ou kill). Pas d’AION. Pas d’app avant qu’un run ait survécu.
+`POSSIBLE v1` n'est plus l'objet. L'affaire « un chantier qui avance » n'est pas une bifurcation.

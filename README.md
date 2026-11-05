@@ -1,40 +1,35 @@
 # Celui-là
 
-Un possible, arraché à une session morte, collable comme un lien.
+Pas de bifurcation, pas d'identité. Pas d'identité, pas d'objet.
 
-Pas une app. Pas un migrateur. Pas AION. Pas une skill.
+Le dépôt ne transporte pas encore de capsule, de chiffre, ni de langage. Il fixe l'identité d'une bifurcation.
 
-```
-garde celui-là  →  un bloc  →  reprends ça
-```
+## Triplet
 
-## Hypothèse (à tuer)
+| Place | Rôle |
+|---|---|
+| `taken` | Suite choisie |
+| `abandoned` | Suite non choisie |
+| `condition` | Ce qui rend les deux suites incompatibles |
 
-Après qu’une intelligence a considéré une affaire, **un** possible écarté — pas le chat, pas le résumé, pas la recette — suffit à une **autre** architecture pour reprendre **cette** branche.
+Les trois textes sont toute l'identité. Rien d'autre n'entre dans le hash.
 
-Si non : le dépôt se ferme.
+## Deux validations
 
-## Périmètre (strict)
+La validation structurelle est le code. Trois textes non vides, Unicode NFC, espaces réduits, chemins distincts, JSON canonique sans espace, SHA-256. Si une case manque : `NULL`. Pas de remplacement.
 
-| Inclus | Exclu |
-|--------|--------|
-| Un objet `POSSIBLE v1` | Champ / shortlist / plusieurs items |
-| Encode / parse / classify | UI, comptes, feed, harnais |
-| Tests de massacre | `session-migrate`, SBAR, `SKILL.md` |
-| Protocole d’expérience n=1 | Produit avant la première affaire réelle |
+La validation sémantique est extérieure. Même affaire, deux suites alternatives, incompatibilité réelle, pas une simple reformulation. Le SHA-256 ne la juge pas. `birth` refuse l'objet si le témoin fourni n'est pas explicitement vrai. Le code n'invente pas ce témoin.
 
-## Objet
+## Vecteur
 
 ```
-POSSIBLE v1
-affaire: un chantier qui avance sans que je le dirige à chaque heure
-contraintes: un objet collable · pas une session · pas un tarif
-état: ouvert
-nom: Celui-là
-où: github.com/19891501/celui-la
+taken:      envoyer 100 USDC à Alice.
+abandoned:  envoyer 100 USDC à Bob.
+condition:  une transaction unique de 100 USDC ne peut avoir qu'un seul destinataire.
+BRANCH-ID:  9127abef7d4c96e60f2329543ee6c96346dabd9fe89ae141a80cb66caa41bd79
 ```
 
-`état: clos-ici` exige une ligne `fait:` factuelle. Jamais un récit.
+`162054c3…` est un autre triplet, structurellement hashable, refusé comme objet : il nomme le système. `3d5e2427…` ne correspond pas à cette canonisation. Ce n'est pas un vecteur de référence.
 
 ## Travail
 
@@ -42,5 +37,8 @@ où: github.com/19891501/celui-la
 npm test
 ```
 
-Une issue = une unité. Le protocole : [`experiments/PROTOCOL.md`](experiments/PROTOCOL.md).  
-Comment on bosse : [`AGENTS.md`](AGENTS.md).
+Trois lignes sur l'entrée standard, dans l'ordre pris, laissé, condition :
+
+```
+npm run id
+```

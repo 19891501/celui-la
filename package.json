@@ -1,16 +1,11 @@
 {
   "name": "celui-la",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Un possible, arraché à une session morte, collable comme un lien.",
+  "description": "Identité d'une bifurcation. Pas une app.",
   "scripts": {
     "test": "node --test src/*.test.mjs",
-    "parse": "node src/cli.mjs parse",
-    "encode": "node src/cli.mjs encode",
-    "validate": "node src/cli.mjs validate"
-  },
-  "dependencies": {
-    "ajv": "^8.20.0"
+    "id": "node src/cli.mjs id"
   }
 }
