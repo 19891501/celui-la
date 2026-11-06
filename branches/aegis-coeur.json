@@ -1,0 +1,13 @@
+{
+  "taken": "AEGIS est le passeport qui refuse, avant signature, une requête valide différente de l'intention figée.",
+  "abandoned": "AEGIS est un scanner de menaces qui bloque les approbations, Permit2 et les adresses suspectes.",
+  "condition": "Le cœur du produit est unique : soit il prouve l'écart entre intention et requête, soit il attribue un risque.",
+  "branchId": "e39bec8d7147deffd6e2929cea905d2d4a556aca17b048f95924346e10b2df48",
+  "semantic": {
+    "sameAffair": true,
+    "alternatives": true,
+    "incompatibility": true,
+    "notWording": true,
+    "source": "Décision du fil : le scanner n'est plus le produit. Le témoin est écrit ici, il n'est pas déduit par le hash."
+  }
+}
