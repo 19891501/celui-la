@@ -13,7 +13,7 @@ Existe-t-il un objet X, plus petit qu’une session, qui n’est ni transcript, 
 
 ## X autorisé
 
-Un bloc `POSSIBLE v1` qui passe `npm test` et `classify === possible`.
+Un triplet (taken / abandoned / condition) qui passe `npm test` et naît via `birth` (témoin sémantique explicitement vrai). Identité = BRANCH-ID (SHA-256 structurel).
 
 ## X interdit (contrôle)
 
@@ -23,7 +23,7 @@ Le même run, trois contrôles, même B :
 |----------|--------|
 | C0 | Rien (B part de l’affaire nue) |
 | C1 | Transcript / résumé de A |
-| C2 | `POSSIBLE v1` |
+| C2 | Triplet + BRANCH-ID |
 
 On ne déclare un succès que si C2 > C0 **et** C2 n’est pas redondant avec C1 (si C1 suffit, X n’est pas l’objet).
 
@@ -31,8 +31,8 @@ On ne déclare un succès que si C2 > C0 **et** C2 n’est pas redondant avec C1
 
 B, **sans** le chat de A, peut-il :
 
-- nommer le possible
-- appliquer les contraintes
+- nommer le possible (taken)
+- appliquer la condition
 - continuer **cette** branche (un acte : message, check, rejet factuel)
 
 Oui / non. Une phrase de preuve. Pas un score.
@@ -47,5 +47,6 @@ Une affaire. La tienne. Pas un corpus.
 - C1 suffit.
 - On a dû coller le roman pour que ça marche.
 - L’objet n’est utile qu’à 10 000 utilisateurs.
+- L’objet est devenu app, handoff ou AION.
 
 Alors `kill`. Le format reste dans git comme cadavre daté.
